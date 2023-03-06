@@ -1,0 +1,58 @@
+<%-- 
+    Document   : createProduct
+    Created on : Mar 2, 2023, 11:41:57 PM
+    Author     : vuhai
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"
+        id="bootstrap-css">
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Form Thêm mới sản phẩm</h1>
+
+        <form method="post" action="addProduct" class="form">
+            <table class="table">
+                <tr>
+                    <td>CategoryId</td>
+                    <td><input type="text" name="CategoryId" id="supplier_code" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>DisplayName</td>
+                    <td><input type="text" name="DisplayName" id="DisplayName" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>UnitId</td>
+                    <td><input type="text" name="UnitId" id="UnitId" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>SuplierId</td>
+                    <td><input type="text" name="SuplierId" id="SuplierId" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>total</td>
+                    <td><input type="text" name="total" id="total" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>image</td>
+                    <td><input type="text" name="image" id="image" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button name="btnSave" class="btn btn-primary"><i class="fas fa-save"></i> Lưu dữ liệu</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+
+</html>
