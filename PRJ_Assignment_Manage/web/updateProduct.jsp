@@ -19,35 +19,35 @@
     <div class="container">
         <h1>Form Thêm mới sản phẩm</h1>
 
-        <form method="post" action="addProduct" class="form">
+        <form method="post" action="updateProduct" class="form">
             <table class="table">
                 <tr>
                     <td>ProductId</td>
-                    <td><input type="text" name="ProductId" id="supplier_code" class="form-control" value="" /></td>
+                    <td><input type="text" name="ProductId" id="supplier_code" class="form-control" value="${product.productId}" /></td>
                 </tr>
                 <tr>
                     <td>CategoryId</td>
-                    <td><input type="text" name="CategoryId" id="supplier_code" class="form-control" value="" /></td>
+                    <td><input type="text" name="CategoryId" id="supplier_code" class="form-control" value="${product.categoryId}" /></td>
                 </tr>
                 <tr>
                     <td>DisplayName</td>
-                    <td><input type="text" name="DisplayName" id="DisplayName" class="form-control" value=""  /></td>
+                    <td><input type="text" name="DisplayName" id="DisplayName" class="form-control" value="${product.displayName}"  /></td>
                 </tr>
                 <tr>
                     <td>UnitId</td>
-                    <td><input type="text" name="UnitId" id="UnitId" class="form-control" value=""  /></td>
+                    <td><input type="text" name="UnitId" id="UnitId" class="form-control" value="${product.unitId}"  /></td>
                 </tr>
                 <tr>
                     <td>SuplierId</td>
-                    <td><input type="text" name="SuplierId" id="SuplierId" class="form-control" value=""  /></td>
+                    <td><input type="text" name="SuplierId" id="SuplierId" class="form-control" value="${product.suplierId}"  /></td>
                 </tr>
                 <tr>
                     <td>total</td>
-                    <td><input type="text" name="total" id="total" class="form-control" value=""  /></td>
+                    <td><input type="text" name="total" id="total" class="form-control" value="${product.total}"  /></td>
                 </tr>
                 <tr>
                     <td>image</td>
-                    <td><input type="text" name="image" id="image" class="form-control" value=""  /></td>
+                    <td><input type="text" name="image" id="image" class="form-control" value="${product.image}"  /></td>
                 </tr>
                 <tr>
                     <td colspan="2">

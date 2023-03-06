@@ -5,7 +5,12 @@
 
 package Controller;
 
+import Dal.CategoryDao;
 import Dal.ProductDao;
+import Model.Category;
+import Model.Product;
+import Model.Suplier;
+import Model.Unit;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,6 +18,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  *
@@ -56,7 +62,15 @@ public class addProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        CategoryDao dao = new CategoryDao();
+        List<Category> listC = dao.getAll();
+        request.setAttribute("listC", listC);
+        List<Unit> listU = dao.getAllUnit();
+        request.setAttribute("listU", listU);
+        List<Suplier> listS = dao.getAllSuplier();
+        request.setAttribute("listS", listS);
+        request.getRequestDispatcher("createProduct.jsp").forward(request, response);
+        
     } 
 
     /** 

@@ -29,7 +29,7 @@
             <h1>Danh sách sản phẩm</h1>
 
             <!-- Button Thêm mới -->
-            <a href="createProduct.jsp" class="btn btn-primary">
+            <a href="addProduct" class="btn btn-primary">
                 <i class="fas fa-plus"></i> Thêm mới
             </a>
             <form action="crudProduct" >
@@ -58,7 +58,7 @@
                                     <td>${list.unitId}</td>
                                     <td>${list.suplierId}</td>
                                     <td>${list.total}</td>
-                                    <td style="word-wrap: break-word">${list.image}</td>
+                                    <td>${list.image}</td>
                                     <td>
                                         <a href="updateProduct?ProductId=${list.productId}">Edit</a>
 

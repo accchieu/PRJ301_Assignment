@@ -59,7 +59,16 @@ public class updateProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+        ProductDao pdao = new ProductDao();
+        String ProductId = request.getParameter("ProductId");
+        try {
+            Product a = pdao.getProductById(ProductId);
+            request.setAttribute("product", a);
+            request.getRequestDispatcher("updateProduct.jsp").forward(request, response);
+
+        } catch (IOException | ServletException e) {
+            System.out.println("Error: " + e);
+        }
     }
 
     /**
@@ -87,9 +96,9 @@ public class updateProduct extends HttpServlet {
             int UnitId = Integer.parseInt(UnitId_raw);
             int SuplierId = Integer.parseInt(SuplierId_raw);
             int total = Integer.parseInt(total_raw);
-            Product p = new Product(0, CategoryId, DisplayName, UnitId, SuplierId, total, image);
+            Product p = new Product(ProductId, CategoryId, DisplayName, UnitId, SuplierId, total, image);
             pdao.updateProduct(p);
-            response.sendRedirect(request.getContextPath() + "/updateProduct?ProductId=" + ProductId);
+            response.sendRedirect("crudProduct");
         } catch (Exception e) {
             System.out.println("Error: " + e);
         }
