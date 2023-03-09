@@ -29,7 +29,7 @@ public class ProductDao {
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new Product(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getString(7)));
+                list.add(new Product(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getFloat(8)));
             }
         } catch (Exception e) {
             System.out.println("Error:" + e);
@@ -47,11 +47,11 @@ public class ProductDao {
         }
     }
 
-    public void insertProduct(int CategoryId, String DisplayName, int UnitId, int SuplierId, int Total, String Image) {
+    public void insertProduct(int CategoryId, String DisplayName, int UnitId, int SuplierId, int Total, String Image, float Price) {
         try {
             String sql = "insert into\n"
                     + "Product\n"
-                    + "values(?,?,?,?,?,?)";
+                    + "values(?,?,?,?,?,?,?)";
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
             ps.setInt(1, CategoryId);
@@ -60,7 +60,7 @@ public class ProductDao {
             ps.setInt(4, SuplierId);
             ps.setInt(5, Total);
             ps.setString(6, Image);
-
+            ps.setFloat(7, Price);
             ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error:" + e);
@@ -68,7 +68,7 @@ public class ProductDao {
     }
 
     public void updateProduct(Product p) {
-        String query = "update Product set CategoryId = ?, DisplayName = ? , UnitId = ?, SuplierId = ?, Total = ?, [Image] = ? where ProductId = ?";
+        String query = "update Product set CategoryId = ?, DisplayName = ? , UnitId = ?, SuplierId = ?, Total = ?, [Image] = ?, [Price] = ? where ProductId = ?";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -78,7 +78,8 @@ public class ProductDao {
             ps.setInt(4, p.getSuplierId());
             ps.setInt(5, p.getTotal());
             ps.setString(6, p.getImage());
-            ps.setInt(7, p.getProductId());
+            ps.setFloat(7, p.getPrice());
+            ps.setInt(8, p.getProductId());
 
             ps.executeUpdate();
         } catch (Exception e) {
@@ -94,7 +95,7 @@ public class ProductDao {
             ps.setString(1, id);
             rs = ps.executeQuery();
             while (rs.next()) {
-                return new Product(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6),rs.getString(7));
+                return new Product(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getFloat(8));
 
             }
         } catch (Exception e) {

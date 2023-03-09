@@ -61,7 +61,7 @@ public class crudProduct extends HttpServlet {
         ProductDao dao = new ProductDao();
         List<Product> list = dao.getAll();
         request.setAttribute("lists", list);
-        request.getRequestDispatcher("manageProduct.jsp").forward(request, response);
+        request.getRequestDispatcher("crudProduct.jsp").forward(request, response);
     } 
 
     /** 

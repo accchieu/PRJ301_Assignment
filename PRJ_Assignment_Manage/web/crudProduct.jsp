@@ -8,7 +8,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
+    <jsp:include page="header.jsp" />
     <head>
         <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"
               id="bootstrap-css">
@@ -44,6 +44,7 @@
                                 <th>SuplierId</th>
                                 <th>Total</th>
                                 <th>Image</th>
+                                <th>Price</th>
                                 <th>###</th>
                             </tr>
                         </thead>
@@ -59,6 +60,7 @@
                                     <td>${list.suplierId}</td>
                                     <td>${list.total}</td>
                                     <td>${list.image}</td>
+                                    <td>${list.price}</td>
                                     <td>
                                         <a href="updateProduct?ProductId=${list.productId}">Edit</a>
 

@@ -16,6 +16,7 @@
 </head>
 
 <body>
+    <jsp:include page="header.jsp" />
     <div class="container">
         <h1>Form Thêm mới sản phẩm</h1>
 
@@ -48,6 +49,10 @@
                 <tr>
                     <td>image</td>
                     <td><input type="text" name="image" id="image" class="form-control" value="${product.image}"  /></td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td><input type="text" name="price" id="price" class="form-control" value="${product.price}"  /></td>
                 </tr>
                 <tr>
                     <td colspan="2">
