@@ -61,6 +61,7 @@
 
                                 <td>
                                     <a href="#" onclick="doDelete('${list.suplierId}')">Delete</a>
+                                    <a href="updateSuplier?SuplierId=${list.suplierId}">edit</a>
                                 </td>
                             </tr>
                         </tbody><!-- comment -->

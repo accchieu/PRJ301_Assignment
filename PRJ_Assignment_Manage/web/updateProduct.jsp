@@ -24,7 +24,7 @@
             <table class="table">
                 <tr>
                     <td>ProductId</td>
-                    <td><input type="text" name="ProductId" id="supplier_code" class="form-control" value="${product.productId}" /></td>
+                    <td><input type="text" name="ProductId" id="supplier_code" class="form-control" value="${product.productId}" readonly="" /></td>
                 </tr>
                 <tr>
                     <td>CategoryId</td>

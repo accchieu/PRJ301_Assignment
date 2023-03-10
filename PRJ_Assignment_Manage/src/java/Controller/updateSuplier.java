@@ -5,7 +5,8 @@
 package Controller;
 
 import Dal.CatSupUnitDao;
-import Model.Category;
+import Dal.ProductDao;
+import Model.Product;
 import Model.Suplier;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,14 +15,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
 
 /**
  *
  * @author vuhai
  */
-@WebServlet(name = "crudSuplier", urlPatterns = {"/crudSuplier"})
-public class crudSuplier extends HttpServlet {
+@WebServlet(name = "updateSuplier", urlPatterns = {"/updateSuplier"})
+public class updateSuplier extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +40,10 @@ public class crudSuplier extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet crudCategory</title>");
+            out.println("<title>Servlet updateProduct</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet crudCategory at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet updateProduct at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,10 +61,17 @@ public class crudSuplier extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        CatSupUnitDao dao = new CatSupUnitDao();
-        List<Suplier> listS = dao.getAllSuplier();
-        request.setAttribute("listS", listS);
-        request.getRequestDispatcher("crudSuplier.jsp").forward(request, response);
+        CatSupUnitDao pdao = new CatSupUnitDao();
+        String SuplierId = request.getParameter("SuplierId");
+        try {
+
+            Suplier s = pdao.getSuplierById(SuplierId);
+            request.setAttribute("suplier", s);
+            request.getRequestDispatcher("updateSuplier.jsp").forward(request, response);
+
+        } catch (IOException | ServletException e) {
+            System.out.println("Error: " + e);
+        }
     }
 
     /**
@@ -76,16 +83,24 @@ public class crudSuplier extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String SuplierName = request.getParameter("SuplierName");
-        String SuplierAddress = request.getParameter("SuplierAddress");
-        String Phone = request.getParameter("Phone");
-        String Email = request.getParameter("Email");
-        String MoreInfo = request.getParameter("MoreInfo");
-        CatSupUnitDao dao = new CatSupUnitDao();
-        Suplier s = new Suplier(0, SuplierName, SuplierAddress, Phone, Email, MoreInfo);
-        dao.insertSuplier(s);
-        response.sendRedirect("crudSuplier");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        CatSupUnitDao pdao = new CatSupUnitDao();
+
+        try {
+            String SuplierId_raw = request.getParameter("SuplierId");
+            String displayName = request.getParameter("displayName");
+            String SuplierAddress = request.getParameter("SuplierAddress");
+            String Phone = request.getParameter("Phone");
+            String Email = request.getParameter("Email");
+            String MoreInfo = request.getParameter("MoreInfo");
+            int SuplierId = Integer.parseInt(SuplierId_raw);
+            Suplier ss = new Suplier(SuplierId, displayName, SuplierAddress, Phone, Email, MoreInfo);
+            pdao.updateSuplier(ss);
+            response.sendRedirect("crudSuplier");
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
     }
 
     /**

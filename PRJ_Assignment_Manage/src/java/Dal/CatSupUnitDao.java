@@ -106,17 +106,65 @@ public class CatSupUnitDao {
         }
     }
 
-    public void insertSuplier(String SuplierName) {
+    public void insertSuplier(Suplier s) {
         try {
             String sql = "insert into\n"
                     + "Suplier\n"
-                    + "values(?)";
+                    + "values(?,?,?,?,?)";
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
-            ps.setString(1, SuplierName);
+            ps.setString(1, s.getDisplayName());
+            ps.setString(2, s.getSuplierAddress());
+            ps.setString(3, s.getPhone());
+            ps.setString(4, s.getEmail());
+            ps.setString(5, s.getMoreInfo());
             ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error jcs:" + e);
         }
     }
+
+    public void updateSuplier(Suplier s) {
+        String query = "update Suplier set DisplayName = ?, SuplierAddress = ? , Phone = ?, Email = ?, MoreInfo = ? where SuplierId = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, s.getDisplayName());
+            ps.setString(2, s.getSuplierAddress());
+            ps.setString(3, s.getPhone());
+            ps.setString(4, s.getEmail());
+            ps.setString(5, s.getMoreInfo());
+            ps.setInt(6, s.getSuplierId());
+
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Errorew: " + e);
+        }
+    }
+//    
+//    public static void main(String[] args) {
+//        CatSupUnitDao dao = new CatSupUnitDao();
+//        Suplier s = new Suplier(2005, "ưdw", "e", "adf", "ewef", "wefw");
+//        dao.updateSuplier(s);
+//        System.out.println("success");
+//        
+//    }
+
+    public Suplier getSuplierById(String id) {
+        String sql = "select * from Suplier Where SuplierId = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return new Suplier(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+
+            }
+        } catch (Exception e) {
+        }
+        return null;
+
+    }
+
 }
