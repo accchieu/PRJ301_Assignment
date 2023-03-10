@@ -81,6 +81,16 @@ public class CatSupUnitDao {
             System.out.println("Error:" + e);
         }
     }
+    
+        public void deleteUnit(int id) {
+        try {
+            conn = new DBContext().getConnection();
+            PreparedStatement statement = conn.prepareStatement("DELETE Unit WHERE UnitId=" + id);
+            statement.execute();
+        } catch (Exception e) {
+            System.out.println("Error:" + e);
+        }
+    }
 
     public void deleteSuplier(int id) {
         try {
@@ -100,6 +110,20 @@ public class CatSupUnitDao {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
             ps.setString(1, CatName);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error:" + e);
+        }
+    }
+    
+        public void insertUnit(String UName) {
+        try {
+            String sql = "insert into\n"
+                    + "Unit\n"
+                    + "values(?)";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, UName);
             ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error:" + e);
