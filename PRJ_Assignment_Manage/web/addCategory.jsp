@@ -12,7 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Form Thêm mới sản phẩm</h1>
+        <jsp:include page="header.jsp" />
+        <h1>Form Thêm mới loại sản phẩm</h1>
             <form method="post" action="crudCategory" class="form">
                 <table class="table">
                     

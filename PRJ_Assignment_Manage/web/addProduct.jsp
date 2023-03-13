@@ -53,7 +53,7 @@
                         <td>  <select class="form-control" name="SuplierId">
                                 <c:forEach items="${listS}" var="suplier">
                                     <option value="${suplier.suplierId}">
-                                        ${suplier.suplierName}
+                                        ${suplier.displayName}
                                     </option>
                                 </c:forEach>
                             </select>

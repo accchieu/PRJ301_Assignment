@@ -2,13 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
 package Controller;
 
 import Dal.CatSupUnitDao;
-import Dal.ProductDao;
-import Model.Category;
-import Model.Product;
+import Model.Suplier;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -16,42 +13,44 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
 
 /**
  *
  * @author vuhai
  */
-@WebServlet(name="homeController", urlPatterns={"/home"})
-public class homeController extends HttpServlet {
-   
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+@WebServlet(name = "addSuplier", urlPatterns = {"/addSuplier"})
+public class addSuplier extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet homeController</title>");  
+            out.println("<title>Servlet addSuplier</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet homeController at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet addSuplier at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
-    } 
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -59,19 +58,14 @@ public class homeController extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        CatSupUnitDao dao = new CatSupUnitDao();
-        ProductDao pdao = new ProductDao();
-        List<Product> list = pdao.getAll();
-        
-        List<Category> listC = dao.getAll();
-        request.setAttribute("listC", listC);
-        request.setAttribute("lists", list);
-        request.getRequestDispatcher("home.jsp").forward(request, response);
-    } 
+            throws ServletException, IOException {
+        request.getRequestDispatcher("addSuplier.jsp").forward(request, response);
 
-    /** 
+    }
+
+    /**
      * Handles the HTTP <code>POST</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -79,12 +73,27 @@ public class homeController extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        
+            throws ServletException, IOException {
+        CatSupUnitDao pdao = new CatSupUnitDao();
+
+        try {
+           
+            String displayName = request.getParameter("displayName");
+            String SuplierAddress = request.getParameter("SuplierAddress");
+            String Phone = request.getParameter("Phone");
+            String Email = request.getParameter("Email");
+            String MoreInfo = request.getParameter("MoreInfo");
+            Suplier s = new Suplier(0, displayName, SuplierAddress, Phone, Email, MoreInfo);
+            pdao.insertSuplier(s);
+            response.sendRedirect("crudSuplier");
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override

@@ -18,7 +18,7 @@
 <body>
     <jsp:include page="header.jsp" />
     <div class="container">
-        <h1>Form Thêm mới sản phẩm</h1>
+        <h1>Form Sửa nhà cung ứng</h1>
 
         <form method="post" action="updateSuplier" class="form">
             <table class="table">

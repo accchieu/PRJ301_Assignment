@@ -23,7 +23,7 @@
         <!------ Include the above in your HEAD tag ---------->
 
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-        
+
 
         <style>
             /* Make the image fully responsive */
@@ -36,31 +36,46 @@
                 font-size: 16px;
                 font-style: italic;
             }
+
+            .input-group button{
+                font-size: 16px;
+            }
+            .input-group{
+                font-size: 18px;
+                margin: 10px;
+
+            }
+
         </style>
     </head>
 
     <body>
         <jsp:include page="header.jsp" />
+
+
+
         <div class="container-fluid">
 
             <div class="row">
 
                 <div class="col-md-3">
 
-                    <h1 class="my-4">toys SHOP</h1>
+                    <h1 class="my-4">toys Box</h1>
+
                     <div class="list-group">
-                        <a href="manageProduct.jsp" class="list-group-item">QUẢN LÝ SẢN PHẨM</a>
-                        <a href="#" class="list-group-item">Category 2</a>
-                        <a href="#" class="list-group-item">Category 3</a>
-                        <a href="#" class="list-group-item">Category 3</a>
-                        <a href="#" class="list-group-item">Category 3</a>
-                        <a href="#" class="list-group-item">Category 3</a>
-                        <a href="#" class="list-group-item">Category 3</a>
-                        <a href="#" class="list-group-item">Category 3</a>
-                        <a href="#" class="list-group-item">Category 3</a>
-                        <a href="#" class="list-group-item">Category 3</a>
-                        <a href="#" class="list-group-item">Category 3</a>
-                        <a href="#" class="list-group-item">Category 3</a>
+                        <a href="crudProduct.jsp" class="list-group-item">QUẢN LÝ SẢN PHẨM</a>
+                        
+                        <select class="form-control" name="CategoryId">
+                            
+                            <c:forEach items="${listC}" var="category">
+                                <option value="${category.categoryId}">
+                                    ${category.categoryName}
+                                </option>
+                            </c:forEach>
+                        </select>
+                        <a href="crudProduct.jsp" class="list-group-item">QUẢN LÝ SẢN PHẨM</a>
+
+                        <a href="crudProduct.jsp" class="list-group-item">QUẢN LÝ SẢN PHẨM</a>
 
                     </div>
 
@@ -68,7 +83,15 @@
                 <!-- /.col-lg-3 -->
 
                 <div class="col-md-9">
+                    <form action="searchProduct" method="get">
+                        <div class="input-group">
 
+                            Search Product By Name: &ensp; <input type="search" name="search" />&ensp;
+                            <button type="button" class="btn btn-outline-primary">search</button>
+
+                        </div>
+
+                    </form>
                     <!-- Slider -->
                     <div id="demo" class="carousel slide" data-ride="carousel">
                         <ul class="carousel-indicators">
@@ -121,8 +144,8 @@
                                         <h4 class="card-title">
                                             <a href="#">${list.displayName}</a>
                                         </h4>
-                                         <h5>Số Lượng: ${list.total}</h5>
-                                        
+                                        <h5>Số Lượng: ${list.total}</h5>
+
                                     </div>
                                     <div class="card-footer">
                                         <small class="text-muted"> </small>

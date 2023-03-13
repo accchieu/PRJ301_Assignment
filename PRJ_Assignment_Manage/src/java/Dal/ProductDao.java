@@ -104,4 +104,57 @@ public class ProductDao {
 
     }
 
+    public List<Product> searchProductByName(String searchValue) {
+        List<Product> products = new ArrayList<>();
+        String query = "select * from Product where DisplayName like '%" + searchValue + "%' order by DisplayName desc";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                products.add(new Product(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getFloat(8)));
+            }
+            return products;
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
+        return null;
+    }
+
+    public List<Product> searchProductByCategory(String searchValue) {
+        List<Product> products = new ArrayList<>();
+        String query = "select * from Product where DisplayName like '%" + searchValue + "%' order by DisplayName desc";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                products.add(new Product(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getFloat(8)));
+            }
+            return products;
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
+        return null;
+    }
+
+    public List<Product> getTop4Offset(int amount) {
+        List<Product> listTop4 = new ArrayList<>();
+        String query = "Select * from Product order by ProductId desc offset ? rows fetch next 4 rows only";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, amount);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                listTop4.add(new Product(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getFloat(8)));
+            }
+        } catch (Exception e) {
+            System.out.println("Error:" + e);
+        }
+        return listTop4;
+    }
+
 }

@@ -9,12 +9,17 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"
+              id="bootstrap-css">
+        <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
+        <jsp:include page="header.jsp" />
         <h1>Form Thêm mới nhà cung ứng </h1>
-            <form method="post" action="updateSuplier" class="form">
+            <form method="post" action="addSuplier" class="form">
                 <table class="table">
                     <tr>
                         <td>SuplierName</td>

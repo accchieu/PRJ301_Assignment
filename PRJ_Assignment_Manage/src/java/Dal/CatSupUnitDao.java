@@ -190,5 +190,13 @@ public class CatSupUnitDao {
         return null;
 
     }
+    
+    public static void main(String[] args) {
+        CatSupUnitDao csdb = new CatSupUnitDao();
+        List<Category> list = csdb.getAll();
+        for (Category category : list) {
+            System.out.println(category.toString());
+        }
+    }
 
 }

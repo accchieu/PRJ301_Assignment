@@ -55,6 +55,7 @@ public class addProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        
         CatSupUnitDao dao = new CatSupUnitDao();
         List<Category> listC = dao.getAll();
         request.setAttribute("listC", listC);
@@ -62,7 +63,7 @@ public class addProduct extends HttpServlet {
         request.setAttribute("listU", listU);
         List<Suplier> listS = dao.getAllSuplier();
         request.setAttribute("listS", listS);
-        request.getRequestDispatcher("createProduct.jsp").forward(request, response);
+        request.getRequestDispatcher("addProduct.jsp").forward(request, response);
         
     } 
 

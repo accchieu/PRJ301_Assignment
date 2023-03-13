@@ -17,17 +17,23 @@
                      width="200" height="100">
             </a>
         </div>
-        <div class="search">
-            <div class="wrapper">
-                <form action="search" method="get">
-                    <input type="text" name="header_search" id="">
-                    <button>Tìm kiếm</button>
-                </form>
-            </div>
+
+
+
+        <div class="item">
+            <a href="updateProduct?ProductId=${list.productId}"><p style="color: white;font-size:18px;">Home</p></a>
+        </div>
+        <div class="item">
+            <a href="updateProduct?ProductId=${list.productId}"><p style="color: white;font-size:18px;">About</p></a>
+        </div>
+        <div class="item">
+            <a href="updateProduct?ProductId=${list.productId}"><p style="color: white;font-size:18px;">adf</p></a>
         </div>
         <div class="logout">
             <button>logout</button>
         </div>
+
     </div>
 
 </header>
+

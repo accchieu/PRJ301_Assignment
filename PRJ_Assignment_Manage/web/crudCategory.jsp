@@ -27,7 +27,7 @@
         </script>
     </head>
     <body>
-        <h1>Form Thêm mới sản phẩm</h1>
+        <h1>Form Thêm mới loại sản phẩm</h1>
         <a href="addCategory.jsp" class="btn btn-primary">
             <i class="fas fa-plus"></i> Thêm mới
         </a><br><br>
