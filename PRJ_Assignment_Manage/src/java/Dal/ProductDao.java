@@ -122,14 +122,15 @@ public class ProductDao {
         return null;
     }
 
-    public List<Product> searchProductByCategory(String searchValue) {
+    public List<Product> searchProductByCategory(int searchValue) {
         List<Product> products = new ArrayList<>();
-        String query = "select * from Product where DisplayName like '%" + searchValue + "%' order by DisplayName desc";
+        String query = "select * from Product where CategoryId = ?";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
+            ps.setInt(1, searchValue);
             rs = ps.executeQuery();
-
+            
             while (rs.next()) {
                 products.add(new Product(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getFloat(8)));
             }
@@ -140,13 +141,31 @@ public class ProductDao {
         return null;
     }
 
-    public List<Product> getTop4Offset(int amount) {
-        List<Product> listTop4 = new ArrayList<>();
-        String query = "Select * from Product order by ProductId desc offset ? rows fetch next 4 rows only";
+    public int getTotalProduct() {
+        String query = "Select Count(*) from Product";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
-            ps.setInt(1, amount);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+
+            }
+        } catch (Exception e) {
+            System.out.println("Error:" + e);
+        }
+
+        return 0;
+
+    }
+
+    public List<Product> getTop4Offset(int amount) {
+        List<Product> listTop4 = new ArrayList<>();
+        String query = "Select * from Product order by ProductId asc offset ? rows fetch next 4 rows only";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, (amount - 1) * 4);
             rs = ps.executeQuery();
             while (rs.next()) {
                 listTop4.add(new Product(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getFloat(8)));
@@ -157,4 +176,57 @@ public class ProductDao {
         return listTop4;
     }
 
+    public List<Product> top1sp() {
+        List<Product> Top1 = new ArrayList<>();
+        String query = "SELECT TOP(1) * FROM Product ORDER BY Total desc";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Top1.add(new Product(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getFloat(8)));
+            }
+        } catch (Exception e) {
+            System.out.println("Error:" + e);
+        }
+        return Top1;
+    }
+
+    public List<Product> top2sp() {
+        List<Product> Top2 = new ArrayList<>();
+        String query = "SELECT TOP(1) * FROM Product ORDER BY Total desc";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Top2.add(new Product(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getFloat(8)));
+            }
+        } catch (Exception e) {
+            System.out.println("Error:" + e);
+        }
+        return Top2;
+    }
+
+    public List<Product> top3sp() {
+        List<Product> Top3 = new ArrayList<>();
+        String query = "SELECT TOP(1) * FROM Product ORDER BY Total desc";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Top3.add(new Product(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getFloat(8)));
+            }
+        } catch (Exception e) {
+            System.out.println("Error:" + e);
+        }
+        return Top3;
+    }
+
+    public static void main(String[] args) {
+        ProductDao dao = new ProductDao();
+        List<Product> p=dao.searchProductByCategory(5005);
+        System.out.println(p);
+    }
 }

@@ -24,6 +24,7 @@
 
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
+        <link rel="stylesheet" href="./css/home.css">
 
         <style>
             /* Make the image fully responsive */
@@ -64,15 +65,15 @@
 
                     <div class="list-group">
                         <a href="crudProduct.jsp" class="list-group-item">QUẢN LÝ SẢN PHẨM</a>
-                        
-                        <select class="form-control" name="CategoryId">
-                            
-                            <c:forEach items="${listC}" var="category">
-                                <option value="${category.categoryId}">
-                                    ${category.categoryName}
-                                </option>
-                            </c:forEach>
-                        </select>
+                        <form action="searchCategory">
+                            <select class="form-control" name="CategoryId">
+                                <c:forEach items="${listC}" var="category">
+                                    <option value="${category.categoryId}">
+                                        ${category.categoryName}
+                                    </option>
+                                </c:forEach>
+                            </select>
+                        </form>
                         <a href="crudProduct.jsp" class="list-group-item">QUẢN LÝ SẢN PHẨM</a>
 
                         <a href="crudProduct.jsp" class="list-group-item">QUẢN LÝ SẢN PHẨM</a>
@@ -101,13 +102,17 @@
                         </ul>
 
                         <div class="carousel-inner">
+                            <c:forEach items="${top1}" var="t">
                             <div class="carousel-item active">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT38w98wlqPWKURKODuMDZLK78AweUoRlKz3iwIy1FbEHVZDPLGHRPD1pKO4Zp1qHLR8SA&usqp=CAU" alt="Los Angeles" width="1100" height="500" >
+                                
+                                <img src="${t.image}" alt="Responsive image">
                                 <div class="carousel-caption">
                                     <h3>Los Angeles</h3>
                                     <p>We had such a great time in LA!</p>
-                                </div>   
-                            </div>
+                                </div> 
+                                </div>
+                                </c:forEach>
+                            
                             <div class="carousel-item">
                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT38w98wlqPWKURKODuMDZLK78AweUoRlKz3iwIy1FbEHVZDPLGHRPD1pKO4Zp1qHLR8SA&usqp=CAU" alt="Chicago" width="1100" height="500">
                                 <div class="carousel-caption">
@@ -157,12 +162,20 @@
                         </c:forEach>
                     </div>
                     <!-- /.row Product List -->
+                    <ul class="pagination pagination_lg">
+                        <c:forEach begin="1" end="${endPage}" var="i">
+                            <li class="page"><a class="${tag == i?active:""}" href="home?index=${i}">${i}</a></li>
 
+                        </c:forEach>
+
+                    </ul>
                 </div>
                 <!-- /.col-lg-9 -->
 
             </div>
             <!-- /.row -->
+
+
 
         </div>
         <jsp:include page="footer.jsp" />
