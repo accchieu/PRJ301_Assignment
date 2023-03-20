@@ -178,7 +178,7 @@ public class ProductDao {
 
     public List<Product> top1sp() {
         List<Product> Top1 = new ArrayList<>();
-        String query = "SELECT TOP(1) * FROM Product ORDER BY Total desc";
+        String query = "SELECT TOP 1 * FROM Product ORDER BY Total desc";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);

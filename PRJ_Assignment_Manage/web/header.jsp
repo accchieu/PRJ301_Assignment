@@ -21,19 +21,26 @@
 
 
         <div class="item">
-            <a href="updateProduct?ProductId=${list.productId}"><p style="color: white;font-size:18px;">Home</p></a>
+            <a href="home"><p style="color: white;font-size:18px;">Home</p></a>
         </div>
         <div class="item">
-            <a href="updateProduct?ProductId=${list.productId}"><p style="color: white;font-size:18px;">About</p></a>
+            <p onclick="scrollToBottom()" style="color: white;font-size:18px;">about us</p>
         </div>
         <div class="item">
-            <a href="updateProduct?ProductId=${list.productId}"><p style="color: white;font-size:18px;">adf</p></a>
+            <a href="chart"><p style="color: white;font-size:18px;">Biểu đồ top sản phẩm</p></a>
         </div>
-        <div class="logout">
-            <button>logout</button>
-        </div>
+        
 
     </div>
+
+    <script>
+        function scrollToBottom() {
+            $('html, body').animate({
+                scrollTop: $(document).height()
+            }, 1000);
+        }
+
+    </script>
 
 </header>
 

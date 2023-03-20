@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <link rel="stylesheet" href="./css/footer.css">
 <link rel="stylesheet" href="./css/header.css">
-<footer>
+<footer >
     <div class="container">
         <div class="row">
             <div class="col-md-4">
