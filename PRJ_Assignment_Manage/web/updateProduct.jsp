@@ -31,7 +31,7 @@
                     <td><input type="text" name="CategoryId" id="supplier_code" class="form-control" value="${product.categoryId}" /></td>
                 </tr>
                 <tr>
-                    <td>DisplayName</td>
+                    <td>Productname</td>
                     <td><input type="text" name="DisplayName" id="DisplayName" class="form-control" value="${product.displayName}"  /></td>
                 </tr>
                 <tr>
