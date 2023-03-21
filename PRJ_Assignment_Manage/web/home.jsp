@@ -88,7 +88,7 @@
                     <form action="searchProduct" method="get">
                         <div class="input-group">
 
-                            Search Product By Name: &ensp; <input type="search" name="search" />&ensp;
+                            Search Product By Name: &ensp; <input type="search" name="search"/>&ensp;
                             <button type="button" class="btn btn-outline-primary">search</button>
 
                         </div>
