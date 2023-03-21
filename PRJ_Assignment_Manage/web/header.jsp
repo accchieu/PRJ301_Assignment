@@ -4,6 +4,7 @@
     Author     : vuhai
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <link rel="stylesheet" href="./css/footer.css">
@@ -29,7 +30,7 @@
         <div class="item">
             <a href="chart"><p style="color: white;font-size:18px;">Biểu đồ top sản phẩm</p></a>
         </div>
-        
+       
 
     </div>
 

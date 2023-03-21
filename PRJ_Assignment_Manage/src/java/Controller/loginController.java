@@ -79,7 +79,7 @@ public class loginController extends HttpServlet {
         String pass = request.getParameter("log_password");
         UserDao dao = new UserDao();
         UserModel a = dao.login(username, pass);
-
+        
         if (a == null) {
             request.setAttribute("errMsg", "*Sai tài khoản hoặc mật khẩu!");
             request.getRequestDispatcher("login.jsp").forward(request, response);
@@ -91,7 +91,7 @@ public class loginController extends HttpServlet {
                 
             } else {
                 session.setAttribute("acc", a);
-                request.getRequestDispatcher("home.jsp").forward(request, response);
+                request.getRequestDispatcher("home").forward(request, response);
             }
 
         }
