@@ -95,37 +95,13 @@
 
                     </form>
                     <!-- Slider -->
-                    <div id="demo" class="carousel slide" data-ride="carousel">
-                        <ul class="carousel-indicators">
-                            <li data-target="#demo" data-slide-to="0" class="active"></li>
-                            <li data-target="#demo" data-slide-to="1"></li>
-                            <li data-target="#demo" data-slide-to="2"></li>
-                        </ul>
-
-                        <div class="carousel-inner">
-                            <c:forEach items="${top1}" var="t">
-                                <div class="carousel-item active">
-
-                                    <img src="${t.image}" alt="Responsive image">
-                                    <div class="carousel-caption">
-                                        
-                                    </div> 
-                                </div>
-                            </c:forEach>
 
 
-                        </div>
-                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
-                        </a>
-                        <a class="carousel-control-next" href="#demo" data-slide="next">
-                            <span class="carousel-control-next-icon"></span>
-                        </a>
-                    </div>
-                    <!-- ./ end slider -->
+
+
 
                     <!-- Product List -->
-                    <div class="row">
+                    
                         <c:forEach var="list" items="${lists}">
                             <div class="col-md-4 col-md-6 mb-4">
                                 <div class="card h-100">

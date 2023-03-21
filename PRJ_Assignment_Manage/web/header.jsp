@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <link rel="stylesheet" href="./css/footer.css">
 <link rel="stylesheet" href="./css/header.css">
+<link rel="stylesheet" href="./css/home.css">
 <header>
     <div class="top_header">
         <div class="logo">
