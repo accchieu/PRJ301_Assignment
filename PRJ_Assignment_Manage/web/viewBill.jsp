@@ -36,10 +36,9 @@
                         <thead>
                             <tr>
                                 <th>ProductId</th>
-                                <th>CategoryId</th>
+                                <th>quantity</th>
                                 <th>DisplayName</th>
-                                <th>UnitId</th>
-                                <th>SuplierId</th>
+                                <th>Id</th>
                                 <th>Total</th>
                               
                             </tr>
@@ -50,13 +49,11 @@
 
                                 <tr>
                                     <td>${list.productId}</td>
-                                    <td>${list.categoryId}</td>
+                                    <td>${list.quantity}</td>
                                     <td>${list.displayName}</td>
-                                    <td>${list.unitId}</td>
-                                    <td>${list.suplierId}</td>
-                                    <td>${list.total}</td>
-                                    <td>${list.image}</td>
-                                    <td>${list.price}</td>
+                                    <td>${list.id}</td>
+                                    <td>${list.tongBill}</td>
+                                    
                                     
                                 </tr>
                             </tbody><!-- comment -->
