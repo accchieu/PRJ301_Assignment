@@ -23,7 +23,7 @@
             <form method="post" action="addProduct" class="form">
                 <table class="table">
                     <tr>
-                        <td>CategoryId</td>
+                        <td>CategoryName</td>
                         <td>  <select class="form-control" name="CategoryId">
                                 <c:forEach items="${listC}" var="category">
                                     <option value="${category.categoryId}">
@@ -38,7 +38,7 @@
                         <td><input type="text" name="DisplayName" id="DisplayName" class="form-control" /></td>
                     </tr>
                     <tr>
-                        <td>UnitId</td>
+                        <td>UnitName</td>
                         <td>  <select class="form-control" name="UnitId">
                                 <c:forEach items="${listU}" var="unit">
                                     <option value="${unit.unitId}">
@@ -49,7 +49,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>SuplierId</td>
+                        <td>SuplierName</td>
                         <td>  <select class="form-control" name="SuplierId">
                                 <c:forEach items="${listS}" var="suplier">
                                     <option value="${suplier.suplierId}">
