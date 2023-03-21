@@ -5,3 +5,9 @@ a.active{
 paging.a{
     p.solid {border-style: solid;}
 }
+home.image{
+    color: red;
+    align-content: baseline;
+    font-family: sans-serif;
+    
+}
