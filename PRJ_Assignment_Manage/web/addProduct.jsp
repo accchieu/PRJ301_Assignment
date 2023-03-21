@@ -34,7 +34,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>DisplayName</td>
+                        <td>ProductName</td>
                         <td><input type="text" name="DisplayName" id="DisplayName" class="form-control" /></td>
                     </tr>
                     <tr>
