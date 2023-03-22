@@ -65,7 +65,7 @@ public class homeController extends HttpServlet {
             throws ServletException, IOException {
         CatSupUnitDao dao = new CatSupUnitDao();
         ProductDao pdao = new ProductDao();
-        //List<Product> top1 = pdao.top1sp();
+        List<Product> top1 = pdao.top1sp();
         
         List<Category> listC = dao.getAll();
 
@@ -85,7 +85,7 @@ public class homeController extends HttpServlet {
         request.setAttribute("listC", listC);
         request.setAttribute("lists", listPage);
         request.setAttribute("tag", index);
-        //request.setAttribute("top1", top1);
+        request.setAttribute("top1", top1);
         
         
         request.getRequestDispatcher("home.jsp").forward(request, response);

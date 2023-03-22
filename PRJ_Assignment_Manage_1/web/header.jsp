@@ -25,16 +25,14 @@
         <div class="item">
             <a href="home"><p style="color: white;font-size:18px;">Home</p></a>
         </div>
-
-        <div class="item">
-            <a href="chart"><p style="color: white;font-size:18px;">Biểu đồ top sản phẩm</p></a>
-        </div>
-        <div class="item">
-            <a href="ViewBill"><p style="color: white;font-size:18px;">Hóa đơn</p></a>
-        </div>
         <div class="item">
             <p onclick="scrollToBottom()" style="color: white;font-size:18px;">about us</p>
         </div>
+        <div class="item">
+            <a href="chart"><p style="color: white;font-size:18px;">Biểu đồ top sản phẩm</p></a>
+        </div>
+       
+
     </div>
 
     <script>

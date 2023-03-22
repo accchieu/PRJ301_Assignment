@@ -38,7 +38,7 @@
                                 <th>ProductId</th>
                                 <th>quantity</th>
                                 <th>DisplayName</th>
-                                <th>OutputInfoId</th>
+                                <th>Id</th>
                                 <th>Total</th>
                               
                             </tr>

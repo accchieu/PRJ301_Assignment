@@ -1,0 +1,13 @@
+a.active{
+    color: green;
+    font-weight: bold;
+}
+paging.a{
+    p.solid {border-style: solid;}
+}
+home.image{
+    color: red;
+    align-content: baseline;
+    font-family: sans-serif;
+    
+}

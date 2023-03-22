@@ -94,52 +94,53 @@
                         </div>
 
                     </form>
+                    <!-- Slider -->
+
+
+
+
 
                     <!-- Product List -->
+                    
+                        <c:forEach var="list" items="${lists}">
+                            <div class="col-md-4 col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <a href="#"><img class="card-img-top"
+                                                     src="${list.image}"
+                                                     alt=""></a>
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <a href="#">${list.displayName}</a>
+                                        </h4>
+                                        <h5>Số Lượng: ${list.total}</h5>
 
-                    <c:forEach var="list" items="${lists}">
-                        <div class="col-md-4 col-md-6 mb-4">
-                            <div class="card h-100">
-                                <a href="#"><img class="card-img-top"
-                                                 src="${list.image}"
-                                                 alt=""></a>
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <a href="#">${list.displayName}</a>
-                                    </h4>
-                                    <h5>Số Lượng: ${list.total}</h5>
-
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-muted"> </small>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted"> </small>
+                                    </div>
                                 </div>
                             </div>
 
-                        </div>
 
-
-                    </c:forEach>
-                    <!-- /.row Product List -->
-                    <div class="col-md-4 col-md-6 mb-4">
-                        <ul class="pagination pagination_lg">
-                            <c:forEach begin="1" end="${endPage}" var="i">
-                                <li class="paging"><a href="home?index=${i}">${i}</a></li>
-
-                            </c:forEach>
-
-                        </ul>
+                        </c:forEach>
                     </div>
+                    <!-- /.row Product List -->
+                    <ul class="pagination pagination_lg">
+                        <c:forEach begin="1" end="${endPage}" var="i">
+                            <li class="page"><a class="${tag == i?active:""}" href="home?index=${i}">${i}</a></li>
+
+                        </c:forEach>
+
+                    </ul>
                 </div>
-
                 <!-- /.col-lg-9 -->
+
             </div>
+            <!-- /.row -->
+
+
+
         </div>
-
-        <!-- /.row -->
-
-
-
-
         <jsp:include page="footer.jsp" />
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
